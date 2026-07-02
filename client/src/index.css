@@ -1,0 +1,659 @@
+/* ============================================================
+   RAPBAE — Document-First Design System
+   Based on: IR 문서, 브랜드 기획서, 전략 제안서 언어
+   Font: Pretendard (본문) + Noto Serif KR (강조 제목)
+   Color: Near-monochrome — Black / White / Gray
+   ============================================================ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap');
+
+/* ── Pretendard via CDN ───────────────────────────────────── */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+/* ── Design Tokens ────────────────────────────────────────── */
+:root {
+  /* Core colors — document palette */
+  --color-black:     #0a0a0a;
+  --color-ink:       #1a1a1a;
+  --color-ink-soft:  #2d2d2d;
+  --color-gray-700:  #444444;
+  --color-gray-500:  #666666;
+  --color-gray-400:  #888888;
+  --color-gray-300:  #aaaaaa;
+  --color-gray-200:  #cccccc;
+  --color-gray-100:  #e8e8e8;
+  --color-gray-50:   #f2f2f2;
+  --color-white:     #ffffff;
+  --color-paper:     #fafafa;
+
+  /* Document structure */
+  --header-height:   56px;
+  --section-pad-y:   clamp(4rem, 8vw, 7rem);
+  --container-max:   1120px;
+  --container-pad:   clamp(1.25rem, 4vw, 3rem);
+
+  /* Typography scale */
+  --text-display:    clamp(2.4rem, 5.5vw, 4.8rem);
+  --text-h1:         clamp(1.8rem, 3.5vw, 3.2rem);
+  --text-h2:         clamp(1.4rem, 2.5vw, 2.2rem);
+  --text-h3:         clamp(1.1rem, 1.8vw, 1.5rem);
+  --text-body-lg:    1.0625rem;
+  --text-body:       0.9375rem;
+  --text-sm:         0.8125rem;
+  --text-xs:         0.6875rem;
+
+  /* Spacing rhythm */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Border */
+  --border-color:    #e0e0e0;
+  --border-dark:     #2a2a2a;
+
+  /* Shadows — very subtle */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+
+  /* Tailwind CSS variable bridge */
+  --background: var(--color-white);
+  --foreground: var(--color-ink);
+  --card: var(--color-white);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-white);
+  --secondary: var(--color-gray-50);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-gray-50);
+  --muted-foreground: var(--color-gray-500);
+  --accent: var(--color-gray-50);
+  --accent-foreground: var(--color-ink);
+  --destructive: #c0392b;
+  --destructive-foreground: var(--color-white);
+  --border: var(--border-color);
+  --input: var(--border-color);
+  --ring: var(--color-ink);
+  --radius: 0px;
+}
+
+/* ── Base Reset ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.75;
+  color: var(--color-ink);
+  background-color: var(--color-white);
+  letter-spacing: -0.01em;
+}
+
+/* ── Typography Classes ───────────────────────────────────── */
+
+/* Document header — used in section labels, chapter markers */
+.doc-label {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+}
+
+/* Section number — 01. 02. style */
+.section-num {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gray-300);
+}
+
+/* Display headline — largest, Noto Serif KR */
+.font-display {
+  font-family: 'Noto Serif KR', 'Pretendard Variable', serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+/* Document heading — Pretendard bold */
+.font-heading {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+/* Body text */
+.font-body {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* Meta / caption */
+.font-meta {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-gray-400);
+}
+
+/* ── Document Header Bar (PPT black header pattern) ──────── */
+.doc-header-bar {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 0.55rem var(--container-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Container ────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* ── Section Divider ──────────────────────────────────────── */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 0;
+}
+
+/* ── Document Row (label | content pattern from PPT) ─────── */
+.doc-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--space-4) var(--space-8);
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--border-color);
+  align-items: baseline;
+}
+
+.doc-row:first-child {
+  border-top: 1px solid var(--border-color);
+}
+
+.doc-row-label {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-gray-500);
+  letter-spacing: -0.01em;
+}
+
+.doc-row-value {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-body);
+  color: var(--color-ink);
+  line-height: 1.65;
+}
+
+/* ── Project Brief Card (Works page) ─────────────────────── */
+.project-brief {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--border-color);
+  padding: var(--space-8) 0;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+.project-brief:last-child {
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+  .project-brief {
+    grid-template-columns: 60px 1fr auto;
+    gap: var(--space-6) var(--space-8);
+    align-items: start;
+  }
+}
+
+/* ── Note Card (Thinking page) ───────────────────────────── */
+.note-card {
+  border-top: 1px solid var(--border-color);
+  padding: var(--space-7) 0;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+.note-card:last-child {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ── Tag / Badge ──────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.55rem;
+  line-height: 1.4;
+}
+
+.tag-dark {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+  border-color: var(--color-ink);
+}
+
+/* ── Inline Highlight ─────────────────────────────────────── */
+.highlight {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 0.05em 0.35em;
+  font-weight: 600;
+}
+
+/* ── Scroll Reveal ────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hover Link ───────────────────────────────────────────── */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-gray-500);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.link-arrow:hover {
+  color: var(--color-ink);
+}
+
+/* ── Button ───────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-ink);
+  color: var(--color-white);
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-ink-soft);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-ink);
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--color-ink);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+/* ── Navigation ───────────────────────────────────────────── */
+.nav-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.nav-brand {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  list-style: none;
+}
+
+.nav-link {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-gray-500);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-ink);
+}
+
+/* ── Page Header (document-style) ────────────────────────── */
+.page-header {
+  padding-top: calc(var(--header-height) + var(--space-16));
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ── Section Header ───────────────────────────────────────── */
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--space-8);
+}
+
+/* ── Two-column doc layout (PPT left-label / right-content) ─ */
+.doc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .doc-grid {
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-6) var(--space-16);
+    align-items: start;
+  }
+}
+
+.doc-grid-label {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-gray-400);
+  letter-spacing: 0.02em;
+  padding-top: 0.2rem;
+}
+
+/* ── Stat Block ───────────────────────────────────────────── */
+.stat-block {
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.stat-number {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-gray-500);
+  margin-top: var(--space-2);
+  letter-spacing: 0.02em;
+}
+
+/* ── Prose (article body) ─────────────────────────────────── */
+.prose-doc {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: var(--text-body-lg);
+  line-height: 1.85;
+  color: var(--color-ink-soft);
+  max-width: 680px;
+}
+
+.prose-doc h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.prose-doc h3 {
+  font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+.prose-doc p {
+  margin-bottom: var(--space-5);
+}
+
+.prose-doc strong {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.footer-root {
+  border-top: 1px solid var(--border-color);
+  padding: var(--space-10) 0;
+  background-color: var(--color-white);
+}
+
+/* ── Utility ──────────────────────────────────────────────── */
+.pt-nav {
+  padding-top: var(--header-height);
+}
+
+.text-ink     { color: var(--color-ink); }
+.text-ink-soft{ color: var(--color-ink-soft); }
+.text-muted   { color: var(--color-gray-500); }
+.text-faint   { color: var(--color-gray-300); }
+.bg-paper     { background-color: var(--color-paper); }
+.bg-black     { background-color: var(--color-black); }
+.border-base  { border-color: var(--border-color); }
+
+/* ── Tailwind layer base ──────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--border-color);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* ── Responsive mobile nav ────────────────────────────────── */
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-mobile-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--space-6) var(--container-pad);
+    gap: var(--space-5);
+    z-index: 99;
+  }
+}
+
+/* ── Mobile-single-col utility ───────────────────────────── */
+@media (max-width: 767px) {
+  .mobile-single-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mobile-single-col > * {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-top: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .mobile-single-col > *:first-child {
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+/* ── Mobile page header ───────────────────────────────────── */
+@media (max-width: 767px) {
+  .page-header {
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 1.75rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  /* doc-header-bar wraps on mobile */
+  .doc-header-bar {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  /* footer responsive */
+  .footer-root {
+    padding: 2rem 0;
+  }
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media (min-width: 768px) {
+  .hero-main-grid {
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: clamp(2rem, 5vw, 5rem) !important;
+  }
+}
