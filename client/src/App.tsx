@@ -4,6 +4,7 @@
  * Routes: Home, Works, CaseStudy, About, Contact, Thinking, Article + Admin CMS
  */
 
+import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -17,6 +18,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Thinking from "./pages/Thinking";
 import Article from "./pages/Article";
+
 // Admin pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
@@ -68,6 +70,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <Analytics />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
