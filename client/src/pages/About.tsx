@@ -195,7 +195,7 @@ export default function About() {
                     { label: "이름", value: profile?.name ? `${profile.name}` : "배승현 (Braum Bae)" },
                     { label: "생년", value: profile?.name ? `${profile.name}` : "Born in 1987." },
                     { label: "역할", value: profile?.title || "Brand Builder" },
-                    { label: "경력", value: "10년 5개월" },
+                    { label: "경력", value: "11년" },
                     { label: "위치", value: "경기 의정부 / 서울" },
                    
                   ].map((row, i, arr) => (
@@ -417,17 +417,16 @@ export default function About() {
             </div>
             <div>
               <p className="reveal" style={{ ...bodyStyle, marginBottom: "1.25rem", transitionDelay: "60ms" }}>
-                저는 클라이언트와 함께 일합니다. 클라이언트를 위해 일하는 것이 아니라.
-                브랜드를 가장 잘 아는 사람은 클라이언트이고, 브랜드를 만드는 방법을 가장 잘 아는 사람은 저입니다.
+                저는 결과만 만드는 사람이 아닙니다.
+                문제를 정의하고, 방향을 설계하고, 실행하고, 개선하는 전 과정을 함께합니다.
               </p>
               <p className="reveal" style={{ ...bodyStyle, marginBottom: "1.25rem", transitionDelay: "120ms" }}>
-                프로젝트의 모든 단계에서 투명하게 소통합니다.
-                왜 이 방향을 선택했는지, 어떤 대안을 검토했는지, 무엇이 우려되는지.
-                결과물만 보여주는 것이 아니라 과정을 함께 합니다.
+                프로젝트의 모든 단계에서 투명하게 소통하며, 
+                결과뿐 아니라 과정과 판단의 이유까지 공유합니다.
+                
               </p>
               <p className="reveal" style={{ ...bodyStyle, transitionDelay: "180ms" }}>
-                모든 프로젝트를 받지 않습니다.
-                제가 진심으로 도움을 줄 수 있다고 믿는 프로젝트만 진행합니다.
+                 좋은 결과는 좋은 협업에서 시작된다고 믿습니다.
               </p>
             </div>
           </div>
