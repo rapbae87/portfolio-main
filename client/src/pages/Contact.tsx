@@ -38,7 +38,7 @@ const projectTypes = [
 
 // Fallback 연락처 (DB가 비어있을 때 사용)
 const FALLBACK_CONTACT = {
-  email: "baesam12@naver.com",
+  email: "hello@rapbae.com",
   kakao: "https://open.kakao.com/o/saPKibyc",
   kakaoLabel: "일대일채팅",
   linkedin: "https://linkedin.com/in/rapbae",
