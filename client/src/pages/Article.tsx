@@ -60,7 +60,10 @@ export default function Article() {
   }
 
   const publishedDate = (article as any).publishedDate ?? (article as any).date ?? "";
-  const paragraphs = (article.content ?? "").split("\n\n").filter(Boolean);
+  const paragraphs = (article.content ?? "")
+  .split(/\n\s*\n/)
+  .map((paragraph) => paragraph.trim())
+  .filter(Boolean);
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "var(--color-white)" }}>
@@ -77,8 +80,7 @@ export default function Article() {
           <div style={{ maxWidth: "760px" }}>
             <div className="reveal" style={{ display: "flex", gap: "0.75rem", marginBottom: "1.25rem", flexWrap: "wrap" }}>
               <span className="tag">{article.category}</span>
-              {publishedDate && <span style={{ fontSize: "0.6875rem", color: "var(--color-gray-300)" }}>{publishedDate}</span>}
-              {article.readTime && <span style={{ fontSize: "0.6875rem", color: "var(--color-gray-300)" }}>{article.readTime}</span>}
+                            
             </div>
 
             <h1 className="reveal" style={{ fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "clamp(1.75rem, 4.5vw, 3.5rem)", fontWeight: 800, color: "var(--color-ink)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.5rem" }}>
