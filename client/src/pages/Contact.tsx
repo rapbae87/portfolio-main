@@ -141,11 +141,11 @@ export default function Contact() {
               {selected && (
                 <div style={{ marginTop: "1.5rem", padding: "1.25rem", border: "1px solid var(--color-ink)", backgroundColor: "var(--color-paper)" }}>
                   <p style={{ fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "0.8125rem", color: "var(--color-gray-500)", lineHeight: 1.7 }}>
-                    <strong style={{ color: "var(--color-ink)" }}>{projectTypes.find(t => t.id === selected)?.label}</strong> 관련 문의는 아래 이메일로 연락 주세요.
-                    선택하신 프로젝트 유형과 현재 상황을 간략히 적어 보내주시면 빠르게 검토하겠습니다.
+                    프로젝트 문의는 아래 문의폼을 통해 접수해 주세요.
+                    문의 내용을 확인한 후 가능한 빠르게 답변드리겠습니다.
                   </p>
-                  <a href={`mailto:${email}`} style={{ display: "inline-block", marginTop: "1rem", fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "0.875rem", fontWeight: 700, color: "var(--color-ink)", textDecoration: "none", borderBottom: "1px solid var(--color-ink)", paddingBottom: "0.1rem" }}>
-                    {email} →
+                  <a href="https://forms.gle/g85Ny3K9v82xeMBPA" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: "1rem", fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "0.875rem", fontWeight: 700, color: "var(--color-ink)", textDecoration: "none", borderBottom: "1px solid var(--color-ink)", paddingBottom: "0.1rem" }}>
+                    프로젝트 문의하기 →
                   </a>
                 </div>
               )}
@@ -167,26 +167,104 @@ export default function Contact() {
               </p>
             </div>
             <div>
-              {contactLinks.map((link, i) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="reveal"
-                  style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "clamp(1rem,2.5vw,1.5rem) 0", borderBottom: "1px solid var(--border-color)", transitionDelay: `${i * 50}ms`, cursor: "pointer", gap: "1rem" }}
-                >
-                  <div>
-                    <p style={{ fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "0.6875rem", fontWeight: 600, color: "var(--color-gray-300)", letterSpacing: "0.06em", marginBottom: "0.35rem" }}>{link.label}</p>
-                    <p style={{ fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "clamp(0.9rem,1.8vw,1.25rem)", fontWeight: 600, color: "var(--color-ink)", letterSpacing: "-0.01em", transition: "color 160ms ease", wordBreak: "break-all" }}
-                      onMouseEnter={e => (e.currentTarget.style.color = "var(--color-gray-500)")}
-                      onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink)")}
-                    >{link.value}</p>
-                    {link.note && <p style={{ fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "0.6875rem", color: "var(--color-gray-300)", marginTop: "0.25rem" }}>{link.note}</p>}
-                  </div>
-                  <span style={{ color: "var(--color-gray-300)", fontSize: "0.875rem", flexShrink: 0 }}>{link.icon}</span>
-                </a>
-              ))}
+            {contactLinks.map((link, i) => {
+  const isEmail = link.label === "이메일";
+
+  return (
+    <a
+      key={link.label}
+      href={isEmail ? undefined : link.href}
+      target={!isEmail && link.href.startsWith("http") ? "_blank" : undefined}
+      rel={
+        !isEmail && link.href.startsWith("http")
+          ? "noopener noreferrer"
+          : undefined
+      }
+      onClick={(e) => {
+        if (isEmail) {
+          e.preventDefault();
+        }
+      }}
+      className="reveal"
+      style={{
+        textDecoration: "none",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "clamp(1rem,2.5vw,1.5rem) 0",
+        borderBottom: "1px solid var(--border-color)",
+        transitionDelay: `${i * 50}ms`,
+        cursor: isEmail ? "text" : "pointer",
+        userSelect: isEmail ? "text" : "auto",
+        gap: "1rem",
+      }}
+    >
+      <div>
+        <p
+          style={{
+            fontFamily:
+              "'Pretendard Variable','Pretendard',sans-serif",
+            fontSize: "0.6875rem",
+            fontWeight: 600,
+            color: "var(--color-gray-300)",
+            letterSpacing: "0.06em",
+            marginBottom: "0.35rem",
+          }}
+        >
+          {link.label}
+        </p>
+
+        <p
+          style={{
+            fontFamily:
+              "'Pretendard Variable','Pretendard',sans-serif",
+            fontSize: "clamp(0.9rem,1.8vw,1.25rem)",
+            fontWeight: 600,
+            color: "var(--color-ink)",
+            letterSpacing: "-0.01em",
+            transition: "color 160ms ease",
+            wordBreak: "break-all",
+            userSelect: isEmail ? "text" : "auto",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.color = "var(--color-gray-500)")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.color = "var(--color-ink)")
+          }
+        >
+          {link.value}
+        </p>
+
+        {link.note && (
+          <p
+            style={{
+              fontFamily:
+                "'Pretendard Variable','Pretendard',sans-serif",
+              fontSize: "0.6875rem",
+              color: "var(--color-gray-300)",
+              marginTop: "0.25rem",
+            }}
+          >
+            {link.note}
+          </p>
+        )}
+      </div>
+
+      {!isEmail && (
+        <span
+          style={{
+            color: "var(--color-gray-300)",
+            fontSize: "0.875rem",
+            flexShrink: 0,
+          }}
+        >
+          {link.icon}
+        </span>
+      )}
+    </a>
+  );
+})}
             </div>
           </div>
         </div>
