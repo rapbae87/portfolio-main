@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1120" role="img" aria-labelledby="title desc">
+  <title id="title">효성에스피 D2C Commerce Growth</title>
+  <desc id="desc">자사몰 매출 3.5배 성장과 커머스 운영 개선을 표현한 포트폴리오 커버</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f7f4"/>
+      <stop offset="1" stop-color="#e8e8e3"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3f3ef"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000000" flood-opacity=".10"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="1120" fill="url(#bg)"/>
+  <circle cx="1200" cy="180" r="280" fill="#111" opacity=".035"/>
+  <circle cx="1080" cy="920" r="340" fill="#111" opacity=".025"/>
+
+  <g transform="translate(88 98)">
+    <text x="0" y="0" font-family="Pretendard, Arial, sans-serif" font-size="34" font-weight="700" fill="#161616" dominant-baseline="hanging">효성에스피</text>
+    <text x="0" y="60" font-family="Georgia, Times New Roman, serif" font-size="72" fill="#161616" dominant-baseline="hanging">D2C Commerce Growth</text>
+    <line x1="0" y1="160" x2="74" y2="160" stroke="#161616" stroke-width="2"/>
+    <text x="0" y="190" font-family="Pretendard, Arial, sans-serif" font-size="30" fill="#3b3b3b">자사몰 매출</text>
+    <text x="170" y="190" font-family="Pretendard, Arial, sans-serif" font-size="44" font-weight="800" fill="#161616">3.5배</text>
+    <text x="278" y="190" font-family="Pretendard, Arial, sans-serif" font-size="30" fill="#3b3b3b">성장</text>
+  </g>
+
+  <g transform="translate(80 380)" filter="url(#shadow)">
+    <rect x="0" y="0" width="390" height="360" rx="20" fill="url(#panel)"/>
+    <text x="28" y="42" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#222">Sales Performance</text>
+    <text x="28" y="102" font-family="Arial, sans-serif" font-size="48" font-weight="800" fill="#171717">3.5x</text>
+    <text x="138" y="102" font-family="Arial, sans-serif" font-size="18" fill="#666">Revenue Growth</text>
+    <line x1="30" y1="170" x2="360" y2="170" stroke="#deded8"/>
+    <line x1="30" y1="240" x2="360" y2="240" stroke="#deded8"/>
+    <line x1="30" y1="310" x2="360" y2="310" stroke="#deded8"/>
+    <g fill="#c7cec7">
+      <rect x="42" y="275" width="26" height="35" rx="3"/>
+      <rect x="86" y="260" width="26" height="50" rx="3"/>
+      <rect x="130" y="242" width="26" height="68" rx="3"/>
+      <rect x="174" y="218" width="26" height="92" rx="3"/>
+      <rect x="218" y="185" width="26" height="125" rx="3"/>
+      <rect x="262" y="145" width="26" height="165" rx="3"/>
+      <rect x="306" y="98" width="26" height="212" rx="3"/>
+    </g>
+    <path d="M45 280 C110 265 165 238 215 203 C265 168 305 120 337 78" fill="none" stroke="#52665a" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="337" cy="78" r="8" fill="#52665a"/>
+  </g>
+
+  <g transform="translate(510 340)" filter="url(#shadow)">
+    <rect x="0" y="0" width="570" height="455" rx="26" fill="#151515"/>
+    <rect x="18" y="18" width="534" height="395" rx="14" fill="#f6f3ee"/>
+    <rect x="48" y="54" width="170" height="26" rx="6" fill="#202020"/>
+    <rect x="48" y="98" width="250" height="12" rx="6" fill="#bdbdb7"/>
+    <rect x="48" y="122" width="205" height="12" rx="6" fill="#d3d3ce"/>
+    <rect x="48" y="170" width="456" height="120" rx="14" fill="#e4ded4"/>
+    <g fill="#d1cbc0">
+      <rect x="76" y="196" width="86" height="66" rx="9"/>
+      <rect x="181" y="196" width="86" height="66" rx="9"/>
+      <rect x="286" y="196" width="86" height="66" rx="9"/>
+      <rect x="391" y="196" width="86" height="66" rx="9"/>
+    </g>
+    <text x="52" y="332" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#171717">A Better Everyday</text>
+    <rect x="50" y="360" width="124" height="34" rx="17" fill="#171717"/>
+    <text x="77" y="383" font-family="Arial, sans-serif" font-size="12" fill="#fff">SHOP NOW  →</text>
+    <rect x="72" y="423" width="426" height="16" rx="8" fill="#262626"/>
+  </g>
+
+  <g transform="translate(1100 360)" filter="url(#shadow)">
+    <rect x="0" y="0" width="220" height="420" rx="22" fill="#fff"/>
+    <text x="24" y="42" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#222">Order Flow</text>
+    <g font-family="Arial, sans-serif" font-size="15" fill="#444">
+      <circle cx="38" cy="92" r="13" fill="#72877a"/><text x="32" y="98" fill="#fff">✓</text><text x="66" y="98">Order Confirmed</text>
+      <circle cx="38" cy="146" r="13" fill="#72877a"/><text x="32" y="152" fill="#fff">✓</text><text x="66" y="152">Payment</text>
+      <circle cx="38" cy="200" r="13" fill="#72877a"/><text x="32" y="206" fill="#fff">✓</text><text x="66" y="206">Preparing</text>
+      <circle cx="38" cy="254" r="13" fill="#9aa59e"/><text x="31" y="260" fill="#fff">→</text><text x="66" y="260">Shipped</text>
+      <circle cx="38" cy="308" r="13" fill="#c0c6c2"/><text x="31" y="314" fill="#fff">□</text><text x="66" y="314">Delivered</text>
+    </g>
+    <line x1="38" y1="110" x2="38" y2="288" stroke="#d7d9d6" stroke-width="3"/>
+  </g>
+
+  <g transform="translate(86 830)" filter="url(#shadow)">
+    <rect x="0" y="0" width="500" height="190" rx="20" fill="#fff"/>
+    <text x="28" y="40" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#222">Traffic &amp; Marketing</text>
+    <g font-family="Arial, sans-serif" font-size="14" fill="#5b5b5b">
+      <text x="28" y="85">Paid Social</text><rect x="145" y="72" width="290" height="14" rx="7" fill="#e6e8e5"/><rect x="145" y="72" width="235" height="14" rx="7" fill="#718478"/>
+      <text x="28" y="120">Search Ads</text><rect x="145" y="107" width="290" height="14" rx="7" fill="#e6e8e5"/><rect x="145" y="107" width="186" height="14" rx="7" fill="#8b9990"/>
+      <text x="28" y="155">Brand Search</text><rect x="145" y="142" width="290" height="14" rx="7" fill="#e6e8e5"/><rect x="145" y="142" width="148" height="14" rx="7" fill="#a4ada7"/>
+    </g>
+  </g>
+
+  <g transform="translate(690 840)">
+    <path d="M0 120 C140 110 245 82 340 34 C415 -3 478 -48 548 -112" fill="none" stroke="#171717" stroke-width="4" stroke-linecap="round"/>
+    <path d="M531 -111 L548 -112 L543 -95" fill="none" stroke="#171717" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="348" y="8" font-family="Arial, sans-serif" font-size="48" font-weight="800" fill="#171717">3.5x</text>
+    <text x="350" y="38" font-family="Arial, sans-serif" font-size="14" letter-spacing="2" fill="#555">GROWTH</text>
+  </g>
+
+  <g transform="translate(900 865)">
+    <rect x="0" y="70" width="100" height="85" rx="8" fill="#b9aa92"/>
+    <rect x="116" y="36" width="118" height="119" rx="8" fill="#a99679"/>
+    <rect x="250" y="0" width="132" height="155" rx="8" fill="#8e7c61"/>
+    <path d="M0 70 L50 38 L100 70" fill="#cabda9"/>
+    <path d="M116 36 L175 0 L234 36" fill="#bbaa8d"/>
+    <path d="M250 0 L316 -42 L382 0" fill="#9f8e73"/>
+  </g>
+</svg>
