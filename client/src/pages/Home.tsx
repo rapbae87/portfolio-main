@@ -16,7 +16,7 @@ import { projects } from "@/lib/data";
 const FALLBACK_STATS = [
   { num: "10년+", label: "업무 경력", sub: "브랜드 빌드, 온라인 마케팅 전반," },
   { num: "3.5배", label: "자사몰 매출 증가", sub: "효성에스피 재직 중" },
-  { num: "3+", label: "해외 사업권 확보", sub: "Atlantis Strength, FEEJU, Klosterfrau 국내 사업 제안" },
+  { num: "3+", label: "해외 사업권 확보", sub: "해외 브랜드 국내 사업 제안 및 파트너십 추진" },
   { num: "6개", label: "협업 프로젝트", sub: "브랜드·IP·IR·D2C 프로젝트" },
 ];
 
@@ -55,14 +55,12 @@ const clientBrands = [
   "Klosterfrau Healthcare Group (Germany)",
   "EMFLOW COMPANY",
   "효성에스피",
-  "FEEJU",
   "드림컴스",
   "로보트 태권V IP",
 ];
 
 const globalWork = [
   { brand: "Atlantis Strength", country: "🇨🇦 Canada", role: "라이선싱 전략 · 한국 GTM", type: "라이선싱 파트너십" },
-  { brand: "Feeju", country: "🇬🇷 Greece", role: "브랜드 런칭 · D2C · 한국 시장 구축", type: "독점 수입 · 브랜드 운영" },
   { brand: "Klosterfrau", country: "🇩🇪 Germany", role: "한국 시장 진입 전략", type: "유통 파트너십" },
   ];
 
@@ -79,10 +77,11 @@ export default function Home() {
 
   const { data: allProjects } = trpc.projects.list.useQuery({ status: "published" });
 
-  const projectList =
+  const projectList = (
     allProjects && allProjects.length > 0
       ? allProjects
-      : projects;
+      : projects
+  ).filter((p) => p.slug !== "feeju");
 
   const heroSlides = projectList;
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);

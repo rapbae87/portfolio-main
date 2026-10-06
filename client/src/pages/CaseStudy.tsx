@@ -39,20 +39,22 @@ export default function CaseStudy() {
   const { data: dbProject, isLoading } =
     trpc.projects.getBySlug.useQuery(
       { slug: slug ?? "" },
-      { enabled: !!slug }
+      { enabled: !!slug && slug !== "feeju" }
     );
 
   const { data: dbProjects } =
     trpc.projects.list.useQuery({ status: "published" });
 
   const project =
-    dbProject ??
-    projects.find((p) => p.slug === slug);
+    slug === "feeju"
+      ? undefined
+      : dbProject ?? projects.find((p) => p.slug === slug);
 
-  const allProjects =
+  const allProjects = (
     dbProjects && dbProjects.length > 0
       ? dbProjects
-      : projects;
+      : projects
+  ).filter((p) => p.slug !== "feeju");
 
   const currentIndex = allProjects.findIndex((p) => p.slug === slug);
 

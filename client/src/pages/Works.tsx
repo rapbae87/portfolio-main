@@ -42,12 +42,12 @@ const scopeCategories = [
 
 const capabilityRows = [
   { cap: "브랜드 전략", detail: "포지셔닝, 네이밍, 아이덴티티 시스템", projects: "전 프로젝트" },
-  { cap: "상품기획", detail: "SKU 설계, 카테고리 확장, OEM 소싱", projects: "드림컴스, FEEJU, 더뉴리얼, 네이처리아, 등" },
-  { cap: "D2C 커머스", detail: "NAVER, Coupang 자사몰 구축", projects: "드림컴스, FEEJU, 더뉴리얼, 네이처리아, 등 " },
-  { cap: "콘텐츠 제작", detail: "상세페이지, 캠페인 크리에이티브, SNS", projects: "드림컴스, FEEJU, 더뉴리얼, 네이처리아, 등" },
-  { cap: "퍼포먼스 마케팅", detail: "Meta, Naver, Kakao 광고 운영", projects: "드림컴스, FEEJU, 더뉴리얼, 네이처리아, 등" },
+  { cap: "상품기획", detail: "SKU 설계, 카테고리 확장, OEM 소싱", projects: "드림컴스, 더뉴리얼, 네이처리아, 등" },
+  { cap: "D2C 커머스", detail: "NAVER, Coupang 자사몰 구축", projects: "드림컴스, 더뉴리얼, 네이처리아, 등 " },
+  { cap: "콘텐츠 제작", detail: "상세페이지, 캠페인 크리에이티브, SNS", projects: "드림컴스, 더뉴리얼, 네이처리아, 등" },
+  { cap: "퍼포먼스 마케팅", detail: "Meta, Naver, Kakao 광고 운영", projects: "드림컴스, 더뉴리얼, 네이처리아, 등" },
   { cap: "B2B 제안서", detail: "라이선싱, 파트너십, IR 문서 작성", projects: "Atlantis, Klosterfrau, 로보트태권브이, EMFLOW COMPANY" },
-  { cap: "글로벌 전략", detail: "한국 시장 진입, 로컬라이제이션", projects: "Atlantis, Klosterfrau, FEEJU" },
+  { cap: "글로벌 전략", detail: "한국 시장 진입, 로컬라이제이션", projects: "Atlantis, Klosterfrau" },
 ];
 
 export default function Works() {
@@ -58,10 +58,11 @@ export default function Works() {
 
   const { data: dbProjects, isLoading } = trpc.projects.list.useQuery({ status: "published" });
 
-  const projects =
+  const projects = (
     dbProjects && dbProjects.length > 0
       ? dbProjects
-      : fallbackProjects;
+      : fallbackProjects
+  ).filter((p) => p.slug !== "feeju");
 
       const filtered =
   filter === "전체"
