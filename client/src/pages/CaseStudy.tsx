@@ -45,16 +45,23 @@ export default function CaseStudy() {
   const { data: dbProjects } =
     trpc.projects.list.useQuery({ status: "published" });
 
+  const localProject = projects.find((p) => p.slug === slug);
+
   const project =
     slug === "feeju"
       ? undefined
-      : dbProject ?? projects.find((p) => p.slug === slug);
+      : localProject ?? dbProject;
 
-  const allProjects = (
-    dbProjects && dbProjects.length > 0
-      ? dbProjects
-      : projects
-  ).filter((p) => p.slug !== "feeju");
+  const dbOnlyProjects = (dbProjects ?? []).filter(
+    (dbItem) =>
+      dbItem.slug !== "feeju" &&
+      !projects.some((localItem) => localItem.slug === dbItem.slug)
+  );
+
+  const allProjects = [
+    ...projects,
+    ...dbOnlyProjects,
+  ].filter((p) => p.slug !== "feeju");
 
   const currentIndex = allProjects.findIndex((p) => p.slug === slug);
 

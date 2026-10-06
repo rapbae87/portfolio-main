@@ -16,7 +16,7 @@ import { projects } from "@/lib/data";
 const FALLBACK_STATS = [
   { num: "10년+", label: "업무 경력", sub: "브랜드 빌드, 온라인 마케팅 전반," },
   { num: "3.5배", label: "자사몰 매출 증가", sub: "효성에스피 재직 중" },
-  { num: "3+", label: "해외 사업권 확보", sub: "해외 브랜드 국내 사업 제안 및 파트너십 추진" },
+  { num: "3+", label: "글로벌 사업 제안", sub: "해외 브랜드 국내 사업 전략 및 파트너십 제안" },
   { num: "6개", label: "협업 프로젝트", sub: "브랜드·IP·IR·D2C 프로젝트" },
 ];
 
@@ -77,11 +77,16 @@ export default function Home() {
 
   const { data: allProjects } = trpc.projects.list.useQuery({ status: "published" });
 
-  const projectList = (
-    allProjects && allProjects.length > 0
-      ? allProjects
-      : projects
-  ).filter((p) => p.slug !== "feeju");
+  const dbOnlyProjects = (allProjects ?? []).filter(
+    (dbProject) =>
+      dbProject.slug !== "feeju" &&
+      !projects.some((localProject) => localProject.slug === dbProject.slug)
+  );
+
+  const projectList = [
+    ...projects,
+    ...dbOnlyProjects,
+  ].filter((p) => p.slug !== "feeju");
 
   const heroSlides = projectList;
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);

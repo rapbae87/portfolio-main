@@ -34,6 +34,7 @@ const scopeCategories = [
   "브랜드 전략",
   "상품기획",
   "D2C 구축",
+  "커머스 운영",
   "콘텐츠 기획",
   "퍼포먼스 마케팅",
   "B2B 제안서",
@@ -41,12 +42,13 @@ const scopeCategories = [
 ];
 
 const capabilityRows = [
-  { cap: "브랜드 전략", detail: "포지셔닝, 네이밍, 아이덴티티 시스템", projects: "전 프로젝트" },
-  { cap: "상품기획", detail: "SKU 설계, 카테고리 확장, OEM 소싱", projects: "드림컴스, 더뉴리얼, 네이처리아, 등" },
-  { cap: "D2C 커머스", detail: "NAVER, Coupang 자사몰 구축", projects: "드림컴스, 더뉴리얼, 네이처리아, 등 " },
-  { cap: "콘텐츠 제작", detail: "상세페이지, 캠페인 크리에이티브, SNS", projects: "드림컴스, 더뉴리얼, 네이처리아, 등" },
-  { cap: "퍼포먼스 마케팅", detail: "Meta, Naver, Kakao 광고 운영", projects: "드림컴스, 더뉴리얼, 네이처리아, 등" },
-  { cap: "B2B 제안서", detail: "라이선싱, 파트너십, IR 문서 작성", projects: "Atlantis, Klosterfrau, 로보트태권브이, EMFLOW COMPANY" },
+  { cap: "브랜드 전략", detail: "포지셔닝, 사업 구조, 시장 진입 전략", projects: "Atlantis, Klosterfrau, 로보트 태권V, 드림컴스" },
+  { cap: "상품기획", detail: "SKU 설계, 카테고리 확장, 사업화 기획", projects: "효성에스피, 드림컴스, 로보트 태권V" },
+  { cap: "D2C 커머스", detail: "자사몰·오픈마켓 판매 구조 구축 및 개선", projects: "효성에스피, 드림컴스" },
+  { cap: "커머스 운영", detail: "주문·출고·공급사 운영 프로세스 개선", projects: "효성에스피" },
+  { cap: "콘텐츠 제작", detail: "상세페이지, 캠페인 크리에이티브, SNS", projects: "효성에스피, 드림컴스" },
+  { cap: "퍼포먼스 마케팅", detail: "Naver, Google, Meta 광고 운영", projects: "효성에스피, 드림컴스" },
+  { cap: "B2B 제안서", detail: "라이선싱, 파트너십, IR 문서 작성", projects: "Atlantis, Klosterfrau, 로보트 태권V, EMFLOW COMPANY" },
   { cap: "글로벌 전략", detail: "한국 시장 진입, 로컬라이제이션", projects: "Atlantis, Klosterfrau" },
 ];
 
@@ -58,11 +60,16 @@ export default function Works() {
 
   const { data: dbProjects, isLoading } = trpc.projects.list.useQuery({ status: "published" });
 
-  const projects = (
-    dbProjects && dbProjects.length > 0
-      ? dbProjects
-      : fallbackProjects
-  ).filter((p) => p.slug !== "feeju");
+  const dbOnlyProjects = (dbProjects ?? []).filter(
+    (dbProject) =>
+      dbProject.slug !== "feeju" &&
+      !fallbackProjects.some((localProject) => localProject.slug === dbProject.slug)
+  );
+
+  const projects = [
+    ...fallbackProjects,
+    ...dbOnlyProjects,
+  ].filter((p) => p.slug !== "feeju");
 
       const filtered =
   filter === "전체"
@@ -125,9 +132,9 @@ export default function Works() {
               </h1>
             </div>
             <p className="reveal" style={{ fontFamily: "'Pretendard Variable','Pretendard',sans-serif", fontSize: "0.9375rem", color: "var(--color-gray-400)", lineHeight: 1.8, transitionDelay: "120ms" }}>
-              포트폴리오가 아닙니다.<br />
-              브랜드를 처음부터 시장에 안착시킨 과정의 기록입니다.<br />
-              전략부터 실행까지, 모든 결정의 이유와 함께.
+              브랜드와 사업 문제를 해결한 과정의 기록입니다.<br />
+              시장 진입, D2C 성장, IP 사업화, 파트너십까지.<br />
+              전략에서 실행까지 맡은 범위와 결과를 정리했습니다.
             </p>
           </div>
         </div>
