@@ -26,6 +26,13 @@ function useReveal() {
   }, []);
 }
 
+const EMFLOW_CAREER = {
+  period: "현재",
+  company: "엠플로컴퍼니",
+  role: "고문 이사",
+  detail: "아틀란티스 기어 브랜드의 현지화 설계 후, 현재는 마케팅 기획 및 전략 자문을 수행하고 있습니다.",
+};
+
 // Fallback 커리어 타임라인 — 이력서(2026.04.28) 기반
 const FALLBACK_CAREER = [
   {
@@ -140,7 +147,11 @@ export default function About() {
   const dbCertifications = (profile?.certifications as Array<{ name: string; issuer: string; year: string }> | null) ?? null;
   const dbSkills = (profile?.skills as Array<{ name: string; level?: string }> | null) ?? null;
 
-  const career = dbCareer && dbCareer.length > 0 ? mapCareer(dbCareer) : FALLBACK_CAREER;
+  const existingCareer = dbCareer && dbCareer.length > 0 ? mapCareer(dbCareer) : FALLBACK_CAREER;
+  const career = [
+    EMFLOW_CAREER,
+    ...existingCareer.filter((item) => !/엠플로|emflow/i.test(item.company)),
+  ];
   const eduCerts = (dbEducation && dbEducation.length > 0) || (dbCertifications && dbCertifications.length > 0)
     ? mapEduCerts(dbEducation ?? [], dbCertifications ?? [])
     : FALLBACK_EDU_CERTS;
