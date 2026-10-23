@@ -42,14 +42,14 @@ const scopeCategories = [
 ];
 
 const capabilityRows = [
-  { cap: "브랜드 전략", detail: "포지셔닝, 사업 구조, 시장 진입 전략", projects: "Atlantis, Klosterfrau, 로보트 태권V, 드림컴스" },
-  { cap: "상품기획", detail: "SKU 설계, 카테고리 확장, 사업화 기획", projects: "효성에스피, 드림컴스, 로보트 태권V" },
-  { cap: "D2C 커머스", detail: "자사몰·오픈마켓 판매 구조 구축 및 개선", projects: "효성에스피, 드림컴스" },
+  { cap: "브랜드 전략", detail: "포지셔닝, 사업 구조, 시장 진입 전략", projects: "Atlantis, Klosterfrau, 로보트 태권V, 드림컴스, FEEJU" },
+  { cap: "상품기획", detail: "SKU 설계, 카테고리 확장, 사업화 기획", projects: "효성에스피, 드림컴스, 로보트 태권V, FEEJU" },
+  { cap: "D2C 커머스", detail: "자사몰·오픈마켓 판매 구조 구축 및 개선", projects: "효성에스피, 드림컴스, FEEJU" },
   { cap: "커머스 운영", detail: "주문·출고·공급사 운영 프로세스 개선", projects: "효성에스피" },
-  { cap: "콘텐츠 제작", detail: "상세페이지, 캠페인 크리에이티브, SNS", projects: "효성에스피, 드림컴스" },
-  { cap: "퍼포먼스 마케팅", detail: "Naver, Google, Meta 광고 운영", projects: "효성에스피, 드림컴스" },
+  { cap: "콘텐츠 제작", detail: "상세페이지, 캠페인 크리에이티브, SNS", projects: "효성에스피, 드림컴스, FEEJU" },
+  { cap: "퍼포먼스 마케팅", detail: "Naver, Google, Meta 광고 운영", projects: "효성에스피, 드림컴스, FEEJU" },
   { cap: "B2B 제안서", detail: "라이선싱, 파트너십, IR 문서 작성", projects: "Atlantis, Klosterfrau, 로보트 태권V, EMFLOW COMPANY" },
-  { cap: "글로벌 전략", detail: "한국 시장 진입, 로컬라이제이션", projects: "Atlantis, Klosterfrau" },
+  { cap: "글로벌 전략", detail: "한국 시장 진입, 로컬라이제이션", projects: "Atlantis, Klosterfrau, FEEJU" },
 ];
 
 export default function Works() {
@@ -62,14 +62,13 @@ export default function Works() {
 
   const dbOnlyProjects = (dbProjects ?? []).filter(
     (dbProject) =>
-      dbProject.slug !== "feeju" &&
       !fallbackProjects.some((localProject) => localProject.slug === dbProject.slug)
   );
 
   const projects = [
     ...fallbackProjects,
     ...dbOnlyProjects,
-  ].filter((p) => p.slug !== "feeju");
+  ];
 
       const filtered =
   filter === "전체"
