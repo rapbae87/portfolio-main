@@ -27,10 +27,17 @@ function useReveal() {
 }
 
 const EMFLOW_CAREER = {
-  period: "현재",
-  company: "엠플로컴퍼니",
+  period: "2025 – 현재",
+  company: "(주)엠플로컴퍼니",
   role: "고문 이사",
   detail: "아틀란티스 기어 브랜드의 현지화 설계 후, 현재는 마케팅 기획 및 전략 자문을 수행하고 있습니다.",
+};
+
+const FRESHBRIDGE_CAREER = {
+  period: "2026",
+  company: "(주)프레시브릿지",
+  role: "이사",
+  detail: "그리스 음료 브랜드 FEEJU의 국내 온라인 시장 현지화 및 마케팅 실행.",
 };
 
 // Fallback 커리어 타임라인 — 이력서(2026.04.28) 기반
@@ -149,8 +156,9 @@ export default function About() {
 
   const existingCareer = dbCareer && dbCareer.length > 0 ? mapCareer(dbCareer) : FALLBACK_CAREER;
   const career = [
+    FRESHBRIDGE_CAREER,
     EMFLOW_CAREER,
-    ...existingCareer.filter((item) => !/엠플로|emflow/i.test(item.company)),
+    ...existingCareer.filter((item) => !/엠플로|emflow|프레시브릿지|freshbridge/i.test(item.company)),
   ];
   const eduCerts = (dbEducation && dbEducation.length > 0) || (dbCertifications && dbCertifications.length > 0)
     ? mapEduCerts(dbEducation ?? [], dbCertifications ?? [])
