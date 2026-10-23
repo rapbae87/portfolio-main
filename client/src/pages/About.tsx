@@ -44,31 +44,31 @@ const FRESHBRIDGE_CAREER = {
 const FALLBACK_CAREER = [
   {
     period: "2024.03 – 현재",
-    company: "효성에스피",
+    company: "(주)효성에스피",
     role: "온라인 마케팅 매니저",
     detail: "Klosterfrau(독일) 글로벌 파트너십 제안. 로보트 태권V IP 사업화 제안. FEEJU 마케팅 전략. 브랜드 전략 및 신사업 기획, 온라인 종합 마케팅 총괄, 콘텐츠·크리에이티브 디렉팅, 커머스 운영 및 데이터 기반 매출 관리, 파트너십 및 대외 협업. 자사몰 매출 3.5배 증가 및 운영구조 안정화. ",
   },
   {
     period: "2021.11 – 2024.02",
-    company: "티엔알 (TNR)",
+    company: "(주)티엔알 (TNR)",
     role: "1인 창업",
     detail: "브랜드 기획 및 운영, 자사몰 관리, SNS·인플루언서 마케팅, 디자인·콘텐츠 제작, 퍼포먼스 마케팅, 전시 참가. 더뉴리얼 쏘팔메토, 네이처리아 글루타치온 등 브랜드 운영.",
   },
   {
     period: "2020.06 – 2021.10",
-    company: "베아트리스넷",
+    company: "(주)베아트리스넷",
     role: "마케팅 과장 지점장",
     detail: "온라인 마케팅 및 브랜드 전략 기획, SEO/SEM, 콘텐츠 제작, 광고 퍼포먼스 모니터링, 영업 지원 및 KPI 관리.",
   },
   {
     period: "2019.09 – 2020.06",
-    company: "시큐아이파킹코리아",
+    company: "(주)시큐아이파킹코리아",
     role: "마케팅 과장 팀장",
     detail: "전시 관련 프로모션, 오프라인 마케팅, 마케팅 제작물, SNS 관리, 홈페이지·이벤트 배너 기획.",
   },
   {
     period: "2014.07 – 2018.12",
-    company: "윌슨파킹코리아",
+    company: "(유)윌슨파킹코리아",
     role: "마케팅 대리 팀원",
     detail: "프로모션, 전시, 오프라인 마케팅, 마케팅 제작물, SNS 관리, 홈페이지·이벤트 배너 기획.",
   },
@@ -123,8 +123,13 @@ const thStyle: React.CSSProperties = {
 };
 
 // DB career 항목을 About.tsx 표시 형식으로 변환
+function formatCareerCompany(company: string) {
+  const name = company.trim().replace(/^(?:주식회사|유한회사|\(주\)|\(유\)|㈜|㈲)\s*/, "");
+  return `${name === "윌슨파킹코리아" ? "(유)" : "(주)"}${name}`;
+}
+
 function mapCareer(dbCareer: Array<{ company: string; role: string; period: string; description: string }>) {
-  return dbCareer.map((c) => ({ period: c.period, company: c.company, role: c.role, detail: c.description }));
+  return dbCareer.map((c) => ({ period: c.period, company: formatCareerCompany(c.company), role: c.role, detail: c.description }));
 }
 
 // DB education/certifications를 eduCerts 형식으로 변환
